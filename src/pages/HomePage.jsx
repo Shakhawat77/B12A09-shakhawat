@@ -127,7 +127,7 @@ const HomePage = () => {
             <img
               src="https://i.ibb.co.com/zTBdHcx0/Vital-Care-04-0267-Non-Non-Compete13-1675120214406.webp"
               alt=""
-              className="w-32 h-32 mx-auto rounded-full object-cover"
+              className="w-32 h-32 mx-auto rounded-2xl object-cover"
             />
             <h3 className="text-lg font-semibold text-sky-800 mt-4">Dr. Michael Brown</h3>
             <p className="text-sky-700">Pet Behaviorist</p>
