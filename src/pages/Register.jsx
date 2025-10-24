@@ -58,7 +58,7 @@ const Register = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-sky-50 min-h-screen">
       <ToastContainer position="top-right" />
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">

@@ -3,11 +3,11 @@ import MainLayout from "../layout/MainLayout";
 import Homepage from "../pages/HomePage";
 
 import Profile from "../pages/Profile";
-import Aboutus from "../pages/Aboutus";
 import Singin from "../pages/Singin";
 import Register from "../pages/Register";
 import Details from "../pages/Details";
 import PrivateRoute from "./PrivateRoute";
+import Services from "../pages/Services";
 
 
 
@@ -24,8 +24,7 @@ export const router = createBrowserRouter([
 },
 {
     path: '/Aboutus',
-    element: <PrivateRoute><Aboutus></Aboutus></PrivateRoute>
-
+    element: <PrivateRoute><Services></Services></PrivateRoute>
 },
 {
     path:'/profile',
@@ -40,8 +39,8 @@ export const router = createBrowserRouter([
     element: <Register></Register>
 },
 {
-    path:'/:1',
-    element: <Details></Details>
+    path:'/Details/:serviceId',
+    element: <PrivateRoute><Details></Details></PrivateRoute>
 },
 
 

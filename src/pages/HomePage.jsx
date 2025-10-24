@@ -7,6 +7,7 @@ import "swiper/css/autoplay";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { FaStar } from "react-icons/fa";
+import { Navigate, NavLink } from "react-router";
 
 const HomePage = () => {
   const [services, setServices] = useState([]);
@@ -67,9 +68,20 @@ const HomePage = () => {
                   <span className="text-sm text-sky-600">{service.rating}</span>
                 </div>
                 <p className="text-sky-700 font-semibold mt-2">${service.price}</p>
-                <button className="mt-3 w-full bg-sky-300 text-sky-800 font-medium py-2 rounded-md hover:bg-sky-400 transition">
-                  View Details
-                </button>
+              <NavLink to={`/Details/${service.serviceId}`} key={service.serviceId}>
+                  <button
+    onClick={() => {
+      if (user) {
+        Navigate(`/Details/${service.serviceId}`);
+      } else {
+        Navigate("/Singin", { state: { from: `/Details/${service.serviceId}` } });
+      }
+    }}
+    className="mt-3 w-full bg-sky-300 text-sky-800 font-medium py-2 rounded-md hover:bg-sky-400 transition"
+  >
+    View Details
+  </button>
+              </NavLink>
               </div>
             </div>
           ))}

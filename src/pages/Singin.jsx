@@ -23,7 +23,7 @@ const from = location.state?.from?.pathname || "/";
     signInUser(email, password)
       .then((result) => {
         toast.success("Login successful!");
-       navigate(from, { replace: true });
+        navigate("/"); 
       })
       .catch((error) => {
         toast.error(error.message);
@@ -34,21 +34,19 @@ const from = location.state?.from?.pathname || "/";
     googleSignIn()
       .then(() => {
         toast.success("Signed in with Google!");
-       navigate(from, { replace: true });
+        navigate("/");
       })
       .catch((err) => toast.error(err.message));
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-sky-50 min-h-screen">
       <ToastContainer position="top-center" />
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold text-sky-800">Login now!</h1>
           <p className="py-6 text-sky-600">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-            et a id nisi.
+           “Welcome! Please log in to access all our pet care services. By signing in, you can view detailed service information, book appointments, and get personalized tips for your furry friends. Logging in helps us provide the best experience and care for your pets. Let’s keep them happy and healthy!”
           </p>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -80,21 +78,21 @@ const from = location.state?.from?.pathname || "/";
                   </span>
                 </div>
 
-                {/* Forgot password link */}
+                
                 <div className="mt-2">
                   <Link to="/forgot-password" className="link link-hover">
                     Forgot password?
                   </Link>
                 </div>
 
-                <button className="btn btn-neutral mt-4 text-sky-600 bg-sky-300 border-none w-full">
+                <button className="btn btn-neutral mt-4 text-sky-800 bg-sky-300 border-none w-full">
                   Login
                 </button>
 
-                {/* Google Sign-In button */}
+          
                 <button
                   type="button"
-                  className="btn btn-outline mt-2 w-full"
+                  className="btn btn-outline text-sky-800 bg-sky-300 border-none mt-2 w-full"
                   onClick={handleGoogleSignIn}
                 >
                   Sign in with Google
