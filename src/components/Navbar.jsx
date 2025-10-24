@@ -1,8 +1,13 @@
-import React from 'react';
+import React , {use} from 'react';
+import { AuthContext } from "../context/authContext/AuthContext";
 import logo from "../assets/img/pet-care-logo-762e0484-8711-487c-9ba9-f9422b151302.jpg";
 import { NavLink } from 'react-router';
 import './Navbar.css'
 const Navbar = () => {
+
+const {user}=use(AuthContext);
+
+
     return (
       
    <div className="navbar  bg-sky-100 shadow-sm">
@@ -32,8 +37,14 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end ">
-    <NavLink to={"Signin"} className="btn bg-sky-200 text-sky-600">Login</NavLink>
-    <NavLink to={"Register"} className="btn bg-sky-200 text-sky-600">Register</NavLink>
+  {user ? (
+          <NavLink to={"Signin"} className="btn bg-sky-200 text-sky-600">Sign Out</NavLink>
+        ) : (
+          <>
+            <NavLink to={"Signin"} className="btn bg-sky-200 text-sky-600">Login</NavLink>
+            <NavLink to={"Register"} className="btn bg-sky-200 text-sky-600">Register</NavLink>
+          </>
+        )}
   </div>
 </div>
        
