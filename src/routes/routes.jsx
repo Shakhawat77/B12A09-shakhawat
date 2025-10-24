@@ -5,7 +5,7 @@ import Homepage from "../pages/HomePage";
 import Profile from "../pages/Profile";
 import Aboutus from "../pages/Aboutus";
 import Singin from "../pages/Singin";
-import Signup from "../pages/Signup";
+import Register from "../pages/Register";
 
 
 
@@ -33,8 +33,8 @@ export const router = createBrowserRouter([
     element: <Singin></Singin>
 },
 {
-    path:'/Signup',
-    element: <Signup></Signup>
+    path:'/Register',
+    element: <Register></Register>
 }
 
         ]

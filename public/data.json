@@ -1,0 +1,74 @@
+[
+  {
+    "serviceId": 1,
+    "serviceName": "Winter Coat Fitting for Dogs",
+    "providerName": "PawCare Studio",
+    "providerEmail": "info@pawcare.com",
+    "price": 25,
+    "rating": 4.9,
+    "slotsAvailable": 4,
+    "description": "Custom coat fitting and warm outfit options to keep your dog comfortable in the cold.",
+    "image": "https://i.ibb.co.com/5W2BkhMG/redbarkphotography-0444.webp",
+    "category": "Clothing"
+  },
+  {
+    "serviceId": 2,
+    "serviceName": "Winter Grooming & Paw Treatment",
+    "providerName": "CozyPets Grooming",
+    "providerEmail": "hello@cozypets.com",
+    "price": 30,
+    "rating": 4.8,
+    "slotsAvailable": 3,
+    "description": "Professional grooming with moisturizing paw balm and winter-safe shampoo.",
+    "image": "https://i.ibb.co.com/rGPMfwwn/pexels-goochie-poochie-grooming-19145872.jpg",
+    "category": "Grooming"
+  },
+  {
+    "serviceId": 3,
+    "serviceName": "Paw Wax & De-Icer Safe Treatment",
+    "providerName": "HappyPaws Clinic",
+    "providerEmail": "contact@happypaws.com",
+    "price": 18,
+    "rating": 4.7,
+    "slotsAvailable": 5,
+    "description": "Apply protective paw wax and check for cracked pads.",
+    "image": "https://i.ibb.co.com/nMXnBS5z/images.jpg",
+    "category": "Health"
+  },
+  {
+    "serviceId": 4,
+    "serviceName": "Warm Bed Setup & Home Visit",
+    "providerName": "HomePet Comfort",
+    "providerEmail": "services@homepet.com",
+    "price": 45,
+    "rating": 4.95,
+    "slotsAvailable": 2,
+    "description": "In-home consultation to set up warm sleeping areas and draft-proof rooms.",
+    "image": "https://i.ibb.co.com/8DkTdZp7/images-1.jpg",
+    "category": "Home Care"
+  },
+  {
+    "serviceId": 5,
+    "serviceName": "Thermal Sweater Knitting",
+    "providerName": "KnittyPaws",
+    "providerEmail": "orders@knittypaws.com",
+    "price": 40,
+    "rating": 4.6,
+    "slotsAvailable": 6,
+    "description": "Custom handmade thermal sweaters for small and medium pets.",
+    "image": "https://i.ibb.co.com/xtKDVrwz/BRK0713-006290-M.webp",
+    "category": "Clothing"
+  },
+  {
+    "serviceId": 6,
+    "serviceName": "Nutrition Consultation for Winter",
+    "providerName": "VetWise",
+    "providerEmail": "consult@vetwise.com",
+    "price": 50,
+    "rating": 4.85,
+    "slotsAvailable": 3,
+    "description": "Adjust diet plans for maintaining ideal weight and energy in cold months.",
+    "image": "https://i.ibb.co.com/MyDYPF2X/featured-image-58fb164c-d412-41ae-930d-67128246d818.webp",
+    "category": "Nutrition"
+  }
+]

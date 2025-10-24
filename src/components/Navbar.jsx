@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from "../assets/img/pet-care-logo-762e0484-8711-487c-9ba9-f9422b151302.jpg";
 import { NavLink } from 'react-router';
+import './Navbar.css'
 const Navbar = () => {
     return (
       
@@ -31,7 +32,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end ">
-    <a className="btn bg-sky-200 text-sky-600">Login</a>
+    <NavLink to={"Signin"} className="btn bg-sky-200 text-sky-600">Login</NavLink>
+    <NavLink to={"Register"} className="btn bg-sky-200 text-sky-600">Register</NavLink>
   </div>
 </div>
        
