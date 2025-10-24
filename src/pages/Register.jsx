@@ -39,7 +39,7 @@ const Register = () => {
       })
       .then(() => {
         toast.success("Registration successful!");
-        navigate("/");
+      navigate('/');
       })
       .catch((error) => {
         toast.error(error.message);
@@ -50,7 +50,7 @@ const Register = () => {
     googleSignIn()
       .then(() => {
         toast.success("Google Sign-In successful!");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         toast.error(err.message);

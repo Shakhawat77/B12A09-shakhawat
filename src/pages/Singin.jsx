@@ -1,5 +1,5 @@
 import React, { use, useState, useContext } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,9 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../context/authContext/AuthContext";
 
 const Singin = () => {
+  const location = useLocation();
+const navigate = useNavigate();
+const from = location.state?.from?.pathname || "/";
   const [show, setShow] = useState(false);
   const { signInUser, googleSignIn } = useContext(AuthContext);
-  const navigate = useNavigate();
+  navigate(from, { replace: true });
 
   const handleLogIn = (event) => {
     event.preventDefault();
@@ -20,7 +23,7 @@ const Singin = () => {
     signInUser(email, password)
       .then((result) => {
         toast.success("Login successful!");
-        navigate("/"); // Redirect to home or desired page
+       navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);
@@ -31,7 +34,7 @@ const Singin = () => {
     googleSignIn()
       .then(() => {
         toast.success("Signed in with Google!");
-        navigate("/");
+       navigate(from, { replace: true });
       })
       .catch((err) => toast.error(err.message));
   };
