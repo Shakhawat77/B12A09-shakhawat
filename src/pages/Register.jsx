@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
@@ -7,8 +7,10 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
+  const [error, setError] = useState("");
   const [show, setShow] = useState(false);
-  const { createUser, googleSignIn, updateUserProfile } = useContext(AuthContext);
+  const { createUser, googleSignIn, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (event) => {
@@ -18,14 +20,15 @@ const Register = () => {
     const password = event.target.password.value;
     const photo = event.target.photo.value;
 
-    // Password validation
     const uppercase = /[A-Z]/.test(password);
     const lowercase = /[a-z]/.test(password);
     const minLength = password.length >= 6;
+    console.log(error);
 
+   
     if (!uppercase || !lowercase || !minLength) {
-      toast.error(
-        "Password must have at least 1 uppercase, 1 lowercase, and 6 characters."
+      setError(
+        "Password must have 1 uppercase, 1 lowercase, and 6 characters long."
       );
       return;
     }
@@ -39,10 +42,10 @@ const Register = () => {
       })
       .then(() => {
         toast.success("Registration successful!");
-      navigate('/');
+        navigate("/");
       })
       .catch((error) => {
-        toast.error(error.message);
+        setError(error.message);
       });
   };
 
@@ -64,14 +67,17 @@ const Register = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold text-sky-800">Register now!</h1>
           <p className="py-6 text-sky-600">
-            Join our pet care community and explore winter care services for your furry friends.
+            Join our pet care community and explore winter care services for
+            your furry friends.
           </p>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             <form onSubmit={handleRegister}>
               <div className="mb-3">
-                <label className="block text-sm font-medium mb-1 text-sky-600">Name</label>
+                <label className="block text-sm font-medium mb-1 text-sky-600">
+                  Name
+                </label>
                 <input
                   type="text"
                   name="name"
@@ -82,7 +88,9 @@ const Register = () => {
               </div>
 
               <div className="mb-3">
-                <label className="block text-sm font-medium mb-1 text-sky-600">Photo URL</label>
+                <label className="block text-sm font-medium mb-1 text-sky-600">
+                  Photo URL
+                </label>
                 <input
                   type="text"
                   name="photo"
@@ -92,7 +100,9 @@ const Register = () => {
               </div>
 
               <div className="mb-3">
-                <label className="block text-sm font-medium mb-1 text-sky-600">Email</label>
+                <label className="block text-sm font-medium mb-1 text-sky-600">
+                  Email
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -100,10 +110,13 @@ const Register = () => {
                   className="input input-bordered w-full bg-white/20 text-sky-600 placeholder-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
                   required
                 />
+                {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
               </div>
 
               <div className="relative mb-3">
-                <label className="block text-sm font-medium mb-1 text-sky-600">Password</label>
+                <label className="block text-sm font-medium mb-1 text-sky-600">
+                  Password
+                </label>
                 <input
                   type={show ? "text" : "password"}
                   name="password"
@@ -111,12 +124,14 @@ const Register = () => {
                   className="input input-bordered w-full bg-white/20 text-sky-600 placeholder-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
                   required
                 />
+
                 <span
                   onClick={() => setShow(!show)}
                   className="absolute right-[8px] top-[36px] cursor-pointer z-50"
                 >
                   {show ? <FaEye /> : <IoEyeOff />}
                 </span>
+                {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
               </div>
 
               <button className="btn btn-neutral mt-4 text-sky-600 bg-sky-300 border-none w-full">

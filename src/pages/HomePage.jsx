@@ -1,3 +1,4 @@
+import Animation from "../components/ExtraComponents/Animation";
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -147,6 +148,7 @@ const HomePage = () => {
 
         </div>
       </div>
+      <Animation></Animation>
     </div>
   );
 };

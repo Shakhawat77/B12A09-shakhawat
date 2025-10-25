@@ -1,4 +1,4 @@
-import React, { use, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
@@ -9,34 +9,40 @@ import { AuthContext } from "../context/authContext/AuthContext";
 
 const Singin = () => {
   const location = useLocation();
-const navigate = useNavigate();
-const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { signInUser, googleSignIn } = useContext(AuthContext);
-  navigate(from, { replace: true });
 
-  const handleLogIn = (event) => {
+  const handleLogIn = async (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    signInUser(email, password)
-      .then((result) => {
-        toast.success("Login successful!");
-        navigate("/"); 
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+    setLoading(true);
+    try {
+      await signInUser(email, password);
+      toast.success("Login successful!");
+      navigate(from, { replace: true }); 
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleGoogleSignIn = () => {
-    googleSignIn()
-      .then(() => {
-        toast.success("Signed in with Google!");
-        navigate("/");
-      })
-      .catch((err) => toast.error(err.message));
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    try {
+      await googleSignIn();
+      toast.success("Signed in with Google!");
+      navigate(from, { replace: true });
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -46,7 +52,7 @@ const from = location.state?.from?.pathname || "/";
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold text-sky-800">Login now!</h1>
           <p className="py-6 text-sky-600">
-           “Welcome! Please log in to access all our pet care services. By signing in, you can view detailed service information, book appointments, and get personalized tips for your furry friends. Logging in helps us provide the best experience and care for your pets. Let’s keep them happy and healthy!”
+            “Welcome! Please log in to access all our pet care services. By signing in, you can view detailed service information, book appointments, and get personalized tips for your furry friends. Logging in helps us provide the best experience and care for your pets. Let’s keep them happy and healthy!”
           </p>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -78,24 +84,26 @@ const from = location.state?.from?.pathname || "/";
                   </span>
                 </div>
 
-                
                 <div className="mt-2">
                   <Link to="/forgot-password" className="link link-hover">
                     Forgot password?
                   </Link>
                 </div>
 
-                <button className="btn btn-neutral mt-4 text-sky-800 bg-sky-300 border-none w-full">
-                  Login
+                <button
+                  className="btn btn-neutral mt-4 text-sky-800 bg-sky-300 border-none w-full"
+                  disabled={loading}
+                >
+                  {loading ? "Logging in..." : "Login"}
                 </button>
 
-          
                 <button
                   type="button"
                   className="btn btn-outline text-sky-800 bg-sky-300 border-none mt-2 w-full"
                   onClick={handleGoogleSignIn}
+                  disabled={loading}
                 >
-                  Sign in with Google
+                  {loading ? "Signing in..." : "Sign in with Google"}
                 </button>
 
                 <div className="text-center mt-3">

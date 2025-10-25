@@ -7,7 +7,8 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  updateProfile
+  updateProfile,
+  sendPasswordResetEmail
 } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.init';
 
@@ -15,18 +16,18 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const [emailForReset, setEmailForReset] = useState("");
 
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-
   const signInUser = (email, password) => {
     setLoading(true);
+    setEmailForReset(email);  
     return signInWithEmailAndPassword(auth, email, password);
   };
-
 
   const googleSignIn = () => {
     setLoading(true);
@@ -39,7 +40,6 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
- 
   const updateUserProfile = (profile) => {
     if (auth.currentUser) {
       return updateProfile(auth.currentUser, profile);
@@ -48,7 +48,11 @@ const AuthProvider = ({ children }) => {
     }
   };
 
- 
+
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log('current user in auth state change', currentUser);
@@ -65,9 +69,12 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     signInUser,
-    googleSignIn,      
-    logOut,            
-    updateUserProfile, 
+    googleSignIn,
+    logOut,
+    updateUserProfile,
+    resetPassword,
+    emailForReset,
+    setEmailForReset
   };
 
   return (
