@@ -40,13 +40,13 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-base-200">
+    <div className="flex justify-center items-center min-h-screen bg-sky-50">
       <ToastContainer position="top-center" autoClose={2000} />
       <form
         onSubmit={handleReset}
         className="card w-full max-w-md shadow-xl bg-white p-8 space-y-4"
       >
-        <h2 className="text-2xl font-bold text-center text-emerald-600">
+        <h2 className="text-2xl font-bold text-center text-sky-600">
           Reset Password
         </h2>
 
@@ -61,7 +61,7 @@ const ForgotPassword = () => {
 
         <button
           type="submit"
-          className="btn btn-success w-full"
+          className="btn btn-success border-none w-full bg-sky-400 text-sky-800"
           disabled={loading}
         >
           {loading ? "Sending..." : "Reset Password"}
